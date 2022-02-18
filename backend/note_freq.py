@@ -2,6 +2,8 @@ import numpy as np
 from scipy.fft import *
 from scipy.io import wavfile
 from math import log2, pow
+from flask import Flask
+from flask_restful import Resource, Api, reqparse
 
 file = r"C:/Users/Islam/Desktop/untitled.wav"
 
@@ -60,4 +62,7 @@ def freq(file, start_time, end_time):
     print(f'max = {max}')
     return note_list
 
-print(freq(file, 0, 3000))
+app = Flask(__name__)
+api = Api(app)
+
+# print(freq(file, 0, 3000))
