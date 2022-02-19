@@ -1,5 +1,3 @@
-import Head from 'next/head'
-import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
@@ -22,6 +20,8 @@ export default function Home() {
             <button class="btn btn btn-primary">Get Started &rarr;</button>
           </a>
         </div>
+        <img src="https://cdn.discordapp.com/attachments/944282228362453082/944449437101588520/67ioi0b2_1.png" width = "1200" height = "475" />
+
       </main>
     </div>
   )
