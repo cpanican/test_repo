@@ -4,11 +4,12 @@ import styles from '../styles/Home.module.css'
 
 export default function Home() {
   return (
-    <div className={styles.container}>
+    <div>
       <Head>
-        <title>Toodle 🎵</title>
+        <title>Toodle </title>
         <meta name="description" content="Create instrumental music with a whistle" />
         <link rel="icon" href="/favicon.ico" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
       <main className={styles.main}>
@@ -33,9 +34,8 @@ export default function Home() {
 
       <footer className={styles.footer}>
         <a href="/" target="_blank" rel="noopener noreferrer" >
-          Tuudle logo here
           <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
+            <Image src="/tuudle.svg" alt="Tuudle Logo" width={91} height={44} />
           </span>
         </a>
       </footer>
