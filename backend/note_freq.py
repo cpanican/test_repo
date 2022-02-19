@@ -8,8 +8,8 @@ from flask_restful import Resource, Api, reqparse
 from midiutil.MidiFile import MIDIFile
 import mido
 
-file = r"C:/Users/Islam/Desktop/test.wav"
-interval = 13
+file = r"C:/Users/Islam/Desktop/test common.wav"
+interval = 30
 
 def freq(file):
     # Converts file to mono
@@ -55,7 +55,7 @@ def freq(file):
     counter = 0
     while counter < len(vol):
         frequencies = []
-        while vol[counter][0] > 1000:
+        while vol[counter][0] > 800:
             frequencies.append((freq_list[counter], vol[counter][1]))
             counter += 1
             if counter == len(vol):
@@ -130,7 +130,8 @@ x = 0
 for note in note_list:
     x += 20
     pitch = MIDI_note_dict[note[0]]
-    time = note[1]/220
+    print(pitch)
+    time = (note[1]/120)/2
     duration = (tempo/120)
     mf.addNote(track, channel, pitch, time, duration, volume)
 
@@ -141,5 +142,5 @@ with open(r"C:/Users/Islam/Documents/CS/Py/output.mid", 'wb') as outf:
 app = Flask(__name__)
 api = Api(app)
 
-
-print(mido.bpm2tempo(1200)/1000)
+# Convert bpm to ms
+# print(mido.bpm2tempo(1200)/1000)
