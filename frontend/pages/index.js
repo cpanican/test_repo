@@ -5,13 +5,6 @@ import styles from '../styles/Home.module.css'
 export default function Home() {
   return (
     <div>
-      <Head>
-        <title>Toodle </title>
-        <meta name="description" content="Create instrumental music with a whistle" />
-        <link rel="icon" href="/favicon.ico" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-      </Head>
-
       <main className={styles.main}>
         <h1 className={styles.title}>
           Create instrumental music with a whistle.
@@ -23,22 +16,13 @@ export default function Home() {
 
         <div className={styles.grid}>
           <a href="/get-started">
-            <button><h2>Learn more</h2></button>
+            <button class="btn btn-outline-secondary"><i class="bi bi-mic"></i>Learn More</button>
           </a>
-
           <a href="/get-started">
-            <button><h2>Get Started &rarr;</h2></button>
+            <button class="btn btn btn-primary">Get Started &rarr;</button>
           </a>
         </div>
       </main>
-
-      <footer className={styles.footer}>
-        <a href="/" target="_blank" rel="noopener noreferrer" >
-          <span className={styles.logo}>
-            <Image src="/tuudle.svg" alt="Tuudle Logo" width={91} height={44} />
-          </span>
-        </a>
-      </footer>
     </div>
   )
 }
