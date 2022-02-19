@@ -9,3 +9,5 @@ function MyApp({ Component, pageProps }) {
 }
 
 export default MyApp
+
+import "bootstrap-icons/font/bootstrap-icons.css";

@@ -44,11 +44,13 @@ export default function Home() {
 
         <div className={styles.grid}>
           <a href="/get-started">
-            <button><h2>Learn more</h2></button>
+             <button class="btn btn-outline-secondary"><i class="bi bi-mic"></i>Learn More</button>
+
           </a>
 
+
           <a href="/get-started">
-            <button><h2>Get Started &rarr;</h2></button>
+            <button class ="btn btn-info">Get Started &rarr;</button>
           </a>
         </div>
         <img src="https://cdn.discordapp.com/attachments/944282228362453082/944449437101588520/67ioi0b2_1.png" width = "1200" height = "475" />
