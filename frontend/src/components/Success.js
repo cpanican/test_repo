@@ -19,36 +19,41 @@ class Success extends Component {
 
         <div className ="box">
 
-        <div>
         <button>
-        <img source="pianoframe" src="/images/redpiano.jpg"
-        width ="200"
-        height = "200" >
-         </img>
-        </button>
+        <div className ="card">
+        <img className="card-img-top"
+        src="/images/redpiano.jpg"
+        width ="100"
+        height = "100" >
+        </img>
+        <p className ="purplefont">MonoSynth</p>
         </div>
+        </button>
 
-        <div>
         <button>
-        <img  source="pianoframe"
+        <div className ="card">
+        <img className="card-img-top"
         src="/images/guitar.jpg"
-        width ="200"
-         height ="200">
-         </img>
-        </button>
+           width ="100"
+           height ="100">
+        </img>
+        <p className ="purplefont">Guitar</p>
         </div>
+        </button>
 
-        <div>
         <button>
-        <img source="pianoframe"
-         src="/images/electric-guitar.jpg"
-          width ="200"
-          height = "200">
-          </img>
-        </button>
-        </div>
+        <div className = "card">
 
+        <img className="card-img-top"
+        src="/images/electric-guitar.jpg"
+          width ="100"
+          height = "100">
+          </img>
+
+        <p className = "purplefont">Electric Guitar</p>
         </div>
+        </button>
+       </div>
       </main>
     );
   }
