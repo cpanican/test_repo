@@ -31,6 +31,7 @@ def freq(file):
     # dbs = [20*log10( (mean(chunk**2))**.5 ) for chunk in chunks]
     vol = []
     cx = 0
+    
     for chunk in chunks:
         vol.append((mean([abs(c) for c in chunk]), cx))
         cx += interval
@@ -39,12 +40,12 @@ def freq(file):
         # Return a slice of the data from start_time to end_time
         dataToRead = data[int(start_time * sample_rate / 1000) : int(curr * sample_rate / 1000) + 1]
 
-        # Fourier Transform
+        # Rapid Fourier Transform
         N = len(dataToRead)
         yf = rfft(dataToRead)
         xf = rfftfreq(N, 1 / sample_rate)
 
-        # Get the most dominant frequency and return it
+        # Get the most dominant frequency
         idx = np.argmax(np.abs(yf))
         freq = xf[idx]
 
@@ -124,10 +125,11 @@ r_dict = {
     'piano': 0,
     'guitar': 1,
     'flute': 2,
-    'bass': 3
+    'bass': 3,
+    'trumpet': 4
 }
 
-insts = [(21, 108), (38, 97), (0, 72), (24, 60)]
+insts = [(21, 108), (38, 97), (0, 72), (24, 60), (52, 83)]
 
 for inst in r_dict:
     # create your MIDI object
@@ -147,20 +149,26 @@ for inst in r_dict:
         while MIDI_note_dict[note_list[j][0]] > insts[r_dict[inst]][1] or MIDI_note_dict[note_list[j][0]] < insts[r_dict[inst]][0]:
             if MIDI_note_dict[note_list[j][0]] > insts[r_dict[inst]][1]:
                 for i in range(len(note_list)):
-                    note_list[i] = (note_list[i][0][:-1] + str(int(note_list[i][0][-1])- 1), note_list[i][1])
+                    rem_octave = note_list[i][0][:-1] + str(int(note_list[i][0][-1])- 1)
+                    if MIDI_note_dict[rem_octave] >= insts[r_dict[inst]][0]:
+                        note_list[i] = (rem_octave, note_list[i][1])
             else:
                 for i in range(len(note_list)):
-                    note_list[i] = (note_list[i][0][:-1] + str(int(note_list[i][0][-1])+ 1), note_list[i][1])
+                    add_octave = note_list[i][0][:-1] + str(int(note_list[i][0][-1])+ 1)
+                    if MIDI_note_dict[add_octave] <= insts[r_dict[inst]][1]:
+                        note_list[i] = (add_octave, note_list[i][1])
 
 
     print(inst, note_list)
 
     f_input = 'output.mid'
 
-    for note in note_list:
-        pitch = MIDI_note_dict[note[0]]
-        time = (note[1]/120)*2.4
-        duration = (500/120)*2.4
+    for i in range(len(note_list)):
+        pitch = MIDI_note_dict[note_list[i][0]]
+        time = (note_list[i][1]/120)*2.4
+        duration = (1000/120)*2.4
+        if i < len(note_list) - 1:
+            duration = ((note_list[i+1][1] - note_list[i][1])/120)*2.4
         mf.addNote(track, channel, pitch, time, duration, volume)
 
     mf.addProgramChange(track, channel, 0, 73)
