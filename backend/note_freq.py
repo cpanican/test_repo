@@ -110,7 +110,6 @@ def freq(file, sf2_path):
         'F9': 125, 'F#9': 126, 'G9': 127, 'G#9': 128
         }
 
-
     r_dict = {
         'piano': 0,
         'guitar': 1,

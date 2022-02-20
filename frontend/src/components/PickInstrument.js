@@ -28,7 +28,7 @@ class PickInstrument extends Component {
     var formData = new FormData();
     formData.append('file', file);
     formData.append('instrument', instrument);
-    fetch('http://192.168.1.244:420/convert', {
+    fetch('http://192.168.1.10:420/convert', {
       mode: 'no-cors',
       method: 'POST',
       body: formData,

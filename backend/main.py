@@ -1,47 +1,38 @@
 from fileinput import filename
-import os
+
+from jinja2 import TemplateRuntimeError
+from note_freq import freq
+import sys, os
 from unicodedata import name
-from flask import Flask, flash, render_template, request, redirect, send_file, url_for
+from flask import Flask, request, send_file
+from io import StringIO
 from werkzeug.utils import secure_filename
 
-UPLOAD_FOLDER = 'C:\\Users\\Islam\\Documents\\CS\\tuudle\\backend\\uploads'
-ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
-
 app = Flask(__name__)
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-def allowed_file(filename):
-    return '.' in filename and \
-           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
-
-@app.route('/', methods=['GET', 'POST'])
-def upload_file():
+@app.route('/convert', methods=['POST'])
+def convert():
     if request.method == 'POST':
-        # check if the post request has the file part
-        if 'file' not in request.files:
-            flash('No file part')
-            return redirect(request.url)
+        audioFile = request.files['file']
+        instrument = request.form['instrument']
+        print(f'audioFile: {audioFile}', file=sys.stderr)
+        print(f'instrument: {instrument}', file=sys.stderr)
+        
         file = request.files['file']
-        # If the user does not select a file, the browser submits an
-        # empty file without a filename.
-        if file.filename == '':
-            flash('No selected file')
-            return redirect(request.url)
-        if file and allowed_file(file.filename):
-            filename = secure_filename(file.filename)
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            return redirect(url_for('download_file', name=filename))
-    return render_template('template.html')
+        if file:
+            print(f'cur_dir: {os. getcwd()}', file=sys.stderr)
+            file.save("./hi.wav")
+            freq('./hi.wav', './soundfonts')
+            path_to_file = "./outputpiano.wav"
 
-@app.route('/download', methods=['GET', 'POST'])
-def download_file():
-    file_name = request.args.get("name")
-    p = os.path.join(UPLOAD_FOLDER, file_name)
-    return send_file(p, as_attachment=True)
-
-
-
-
+            return send_file(
+                path_to_file,
+                mimetype="audio/wav",
+                as_attachment=True,
+                attachment_filename="outputpiano.wav"
+            )
+    else:
+        return 'not a post request'
 
 if __name__ == "__main__":
 	app.run(host = '0.0.0.0', debug=True, port=420)
