@@ -88,3 +88,16 @@ flex-grow: 1;
 margin: 0px 16px;
 
 }
+
+
+.box2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  gap: 10px 2em;
+
+  margin: 20px 20px;
+}
+
+.box2 :first-child {
+    align-self: center;
+}
