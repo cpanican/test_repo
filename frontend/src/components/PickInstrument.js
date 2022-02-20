@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../styles/PickInstrument.css';
 import { MyContext } from '../MyProvider';
+import { Link } from "react-router-dom";
 
 class PickInstrument extends Component {
   constructor(props) {
@@ -64,9 +65,11 @@ class PickInstrument extends Component {
               </div>
               <div></div>
               <div>
+                <Link to ="/Success">
                 <button class="btn btn-primary btn-lg tuudle-purple-btn" onClick={() => {
                   this.uploadFile(this.state.audioData.blob, this.state.pickedInstrument);
                 }}>Convert</button>
+                </Link>
               </div>
             </div>
           </div>

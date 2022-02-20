@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import '../styles/Success.css';
+import { Link } from "react-router-dom";
 
 class Success extends Component {
 
