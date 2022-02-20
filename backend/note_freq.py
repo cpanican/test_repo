@@ -3,12 +3,12 @@ from scipy.fft import *
 from scipy.io import wavfile
 from statistics import mean
 from math import log2, log10, pow, sqrt
-from flask import Flask
-from flask_restful import Resource, Api, reqparse
 from midiutil.MidiFile import MIDIFile
+from midi2audio import FluidSynth
+import subprocess
 import mido
 
-file = r"C:/Users/Islam/Desktop/test common.wav"
+file = r"C:/Users/Islam/Desktop/demos/Ode to Joy.wav"
 interval = 30
 
 def freq(file):
@@ -82,6 +82,7 @@ note_list = []
 for i in freq(file):
     note_list.append((note(mean([item[0] for item in i])), i[0][1]))
 
+print(f'len(note_list): {len(note_list)}')
 print(note_list)
 
 MIDI_note_dict = {
@@ -126,21 +127,25 @@ mf.addTempo(track, time, 1200)
 channel = 0
 volume = 100
 
+f_input = 'output.mid'
 x = 0
 for note in note_list:
     x += 20
     pitch = MIDI_note_dict[note[0]]
     print(pitch)
-    time = (note[1]/120)/2
-    duration = (tempo/120)
+    time = (note[1]/120)*2.4
+    duration = (500/120)*2.4
     mf.addNote(track, channel, pitch, time, duration, volume)
 
+mf.addProgramChange(track, channel, 0, 73)
 # write it to disk
-with open(r"C:/Users/Islam/Documents/CS/Py/output.mid", 'wb') as outf:
+with open(f_input, 'wb') as outf:
     mf.writeFile(outf)
-    
-app = Flask(__name__)
-api = Api(app)
 
 # Convert bpm to ms
 # print(mido.bpm2tempo(1200)/1000)
+
+instruments = ['piano', 'guitar', 'violen', 'bass?', 'sax']
+inst = 'piano'
+
+subprocess.call(f'powershell.exe fluidsynth -F {f_input[:-4]}{inst}.wav {inst}.sf2 {f_input}', shell=True)
