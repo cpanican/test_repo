@@ -2,15 +2,14 @@ import numpy as np
 from scipy.fft import *
 from scipy.io import wavfile
 from statistics import mean
-from math import log2, log10, pow, sqrt
+from math import log2, pow
 from midiutil.MidiFile import MIDIFile
 import subprocess
 import os
 
-file = r"C:/Users/Islam/Desktop/demos/test.wav"
-interval = 35
-
+# Gets note from frequency
 def note(freq):
+    
     A4 = 440
     C0 = A4*pow(2, -4.75)
     name = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"]
@@ -20,7 +19,9 @@ def note(freq):
     note = name[n] + str(octave)
     return note
 
+# Main function, takes the 'whistle' wav file and the path of the soundfonts as parameters
 def freq(file, sf2_path):
+    interval = 35
     # Converts file to mono
     sample_rate, data = wavfile.read(file)
     # If number of array dimensions > 1 
@@ -28,7 +29,7 @@ def freq(file, sf2_path):
         data = data[:, 0]
     else:
         pass
-
+    
     end_time = ((len(data) - 1)*1000)/sample_rate
     start_time = 0
     freq_list = []
@@ -37,7 +38,6 @@ def freq(file, sf2_path):
     curr = start_time + interval    
 
     chunks = np.array_split(data, end_time/curr)
-    # dbs = [20*log10( (mean(chunk**2))**.5 ) for chunk in chunks]
     vol = []
     cx = 0
     
@@ -46,7 +46,7 @@ def freq(file, sf2_path):
         cx += interval
     
     while curr <= end_time:
-        # Return a slice of the data from start_time to end_time
+        # Data from start_time to end_time
         dataToRead = data[int(start_time * sample_rate / 1000) : int(curr * sample_rate / 1000) + 1]
 
         # Rapid Fourier Transform
@@ -62,6 +62,7 @@ def freq(file, sf2_path):
 
         curr += interval
 
+    # Splits the audio on quiet points
     counter = 0
     while counter < len(vol):
         frequencies = []
@@ -73,21 +74,13 @@ def freq(file, sf2_path):
         counter += 1
         if len(frequencies) > 0:
             notes.append(frequencies)
-    
-    # return notes
-
-    # Find note based on frequency
-    list_of_freqs = []
-
 
     note_list = []
 
     for i in notes:
         note_list.append((note(mean([item[0] for item in i])), i[0][1]))
 
-
-    print(f'len(note_list): {len(note_list)}')
-
+    # Note to MIDI number dictionary
     MIDI_note_dict = {
         'C-1': 0, 'C#-1': 1, 'D-1': 2, 'D#-1': 3, 'E-1': 4, 
         'F-1': 5, 'F#-1': 6, 'G-1': 7, 'G#-1': 8, 'A-1': 9, 
@@ -127,22 +120,22 @@ def freq(file, sf2_path):
         'organ': 5
     }
 
+    # Min and Max frequency values in MIDI numbers for each instrument in r_dict
     insts = [(21, 108), (38, 97), (0, 72), (24, 60), (52, 83), (12, 117)]
 
     for inst in r_dict:
-        # create your MIDI object
-        mf = MIDIFile(1)     # only 1 track
-        track = 0   # the only track
+        # Creates MIDI object
+        mf = MIDIFile(1)    
+        track = 0   
 
-        time = 0    # start at the beginning
-        tempo = 60000/interval
+        time = 0    
         mf.addTrackName(track, time, "Sample Track")
         mf.addTempo(track, time, 1200)
 
-        # add some notes
         channel = 0
         volume = 100
 
+        # Changes note value if note frequency is above or below max or min frequencies respectively for each instrument
         for j in range(len(note_list)):
             while MIDI_note_dict[note_list[j][0]] > insts[r_dict[inst]][1] or MIDI_note_dict[note_list[j][0]] < insts[r_dict[inst]][0]:
                 if MIDI_note_dict[note_list[j][0]] > insts[r_dict[inst]][1]:
@@ -156,11 +149,10 @@ def freq(file, sf2_path):
                         if MIDI_note_dict[add_octave] <= insts[r_dict[inst]][1]:
                             note_list[i] = (add_octave, note_list[i][1])
 
-
-        print(inst, note_list)
-
+        # Names the MIDI file
         f_input = 'output.mid'
 
+        # Sets pitch(note), start time and duration for each note 
         for i in range(len(note_list)):
             pitch = MIDI_note_dict[note_list[i][0]]
             time = (note_list[i][1]/120)*2.4
@@ -169,14 +161,8 @@ def freq(file, sf2_path):
                 duration = ((note_list[i+1][1] - note_list[i][1])/120)*2.4
             mf.addNote(track, channel, pitch, time, duration, volume)
 
-        mf.addProgramChange(track, channel, 0, 73)
-
-
         with open(f_input, 'wb') as outf:
             mf.writeFile(outf)
 
-
-        # Convert bpm to ms
-        # print(mido.bpm2tempo(1200)/1000)
-
+        # Runs a powershell command, uses fluidsynth to join the MIDI and sf2 files and exports it as a .wav
         subprocess.call(f'powershell.exe fluidsynth -F {f_input[:-4]}{inst}.wav {os.path.join(sf2_path, inst)}.sf2 {f_input}', stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
