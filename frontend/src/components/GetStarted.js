@@ -52,8 +52,9 @@ class GetStarted extends Component {
             Click on the record button and start whistling a tune. Once you're done, click finish recording and let Tuudle do its magic!
           </p>
           <div className="grid">
-            <button id="recordButton" class="btn btn-outline-secondary">
-              <i class="bi bi-mic"></i>Record
+            <button className="RecordingBtn" class="btn btn-outline-secondary btn-lg">
+              <p className="recordFont"> Record </p>
+              <i class="bi bi-mic"></i>
             </button>
           </div>
           <AudioReactRecorder state={recordState} onStop={this.onStop} />

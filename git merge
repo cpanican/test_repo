@@ -1,0 +1,223 @@
+[33mcommit 7944c1659c945bf56c7e39373fa6407c3a68403b[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Chris Panican <chrispanican@gmail.com>
+Date:   Sat Feb 19 20:39:51 2022 -0500
+
+    merge conflict"
+
+[33mcommit 59dc0271c2c571a4bf472a6c571bf704d1b398ff[m
+Merge: c9a180c a11401f
+Author: izy1984 <islamelkattawy@gmail.com>
+Date:   Sat Feb 19 20:37:45 2022 -0500
+
+    Merge branch 'main' of https://github.com/cpanican/tuudle
+
+[33mcommit a11401f40a623b9bd5849f646592301a1140b639[m
+Merge: 68670be 81f3a97
+Author: Chris Panican <chrispanican@gmail.com>
+Date:   Sat Feb 19 20:37:31 2022 -0500
+
+    merge
+
+[33mcommit c9a180c836d8aeb0ff5b69cd5510f972e1d0c770[m
+Merge: 804bf61 81f3a97
+Author: izy1984 <islamelkattawy@gmail.com>
+Date:   Sat Feb 19 20:36:54 2022 -0500
+
+    Merge branch 'main' of https://github.com/cpanican/tuudle
+
+[33mcommit 804bf613a40d49e4211796cb0ca3f9dc3e7598f6[m
+Author: izy1984 <islamelkattawy@gmail.com>
+Date:   Sat Feb 19 20:36:36 2022 -0500
+
+    added guitar and flute functionality
+
+[33mcommit 68670be177c27e279ce4ae220e7b37d6c5d19340[m
+Author: Chris Panican <chrispanican@gmail.com>
+Date:   Sat Feb 19 20:35:58 2022 -0500
+
+    finish up the home page and create common classes
+
+[33mcommit 81f3a9783d8c6494f5252ba9d0c52e239ae47812[m
+Author: KHOA NGUYEN <khoa.nguyen21@myhunter.cuny.edu>
+Date:   Sat Feb 19 20:22:26 2022 -0500
+
+    2nd page frontend update
+
+[33mcommit 3d3be00ed5a8f60b83eb06dd188978908d858f09[m
+Merge: b4cecc2 fb8ee1f
+Author: Chris Panican <chrispanican@gmail.com>
+Date:   Sat Feb 19 19:39:51 2022 -0500
+
+    Merge branch 'main' of https://github.com/cpanican/test_repo
+
+[33mcommit b4cecc2145431ae8750e66898162ad56efc9acdc[m
+Author: Chris Panican <chrispanican@gmail.com>
+Date:   Sat Feb 19 19:39:43 2022 -0500
+
+    global css
+
+[33mcommit fb8ee1f5d250bf2266b27bbcbf60a28a23ad984f[m
+Merge: 4f418ee 2111c4d
+Author: KHOA NGUYEN <khoa.nguyen21@myhunter.cuny.edu>
+Date:   Sat Feb 19 19:04:21 2022 -0500
+
+    Merge branch 'main' of https://github.com/cpanican/test_repo
+
+[33mcommit 2111c4d594b5212266fbbc1c0a568c6d5af80ca8[m
+Author: izy1984 <islamelkattawy@gmail.com>
+Date:   Sat Feb 19 19:03:01 2022 -0500
+
+    updated program and added wav+mid files
+
+[33mcommit 4f418ee819cd3641309d928f06b424290d7c3338[m
+Merge: 764f3f3 c4720da
+Author: KHOA NGUYEN <khoa.nguyen21@myhunter.cuny.edu>
+Date:   Sat Feb 19 19:01:24 2022 -0500
+
+    Merge branch 'main' of https://github.com/cpanican/test_repo
+
+[33mcommit 764f3f38b59adf4a8dde61cfb2bbf40605702e1b[m
+Author: KHOA NGUYEN <khoa.nguyen21@myhunter.cuny.edu>
+Date:   Sat Feb 19 18:57:54 2022 -0500
+
+    frontend 2nd page stuff 2nd update
+
+[33mcommit c4720dab096709f932b234dbaa937c871fa05d0c[m
+Author: Chris Panican <chrispanican@gmail.com>
+Date:   Sat Feb 19 18:51:11 2022 -0500
+
+    adjust img
+
+[33mcommit 66dab75b824f82c5457ea2711748375f087ef85b[m
+Author: KHOA NGUYEN <khoa.nguyen21@myhunter.cuny.edu>
+Date:   Sat Feb 19 18:39:44 2022 -0500
+
+    2nd page front end backbone stuff
+
+[33mcommit 3d3b86a104178b345c945a90af4a856770f0121f[m
+Merge: 67ad723 9345c5c
+Author: Chris Panican <chrispanican@gmail.com>
+Date:   Sat Feb 19 17:59:15 2022 -0500
+
+    merge
+
+[33mcommit 67ad723c2bdbcf93f15a2d520ea6b7d87f7167d6[m
+Author: Chris Panican <chrispanican@gmail.com>
+Date:   Sat Feb 19 16:58:59 2022 -0500
+
+    make the header and footers appear in all pages
+
+[33mcommit 9345c5c31eb4fe42357f200f103f729b8c7c2fe1[m
+Author: KHOA NGUYEN <khoa.nguyen21@myhunter.cuny.edu>
+Date:   Sat Feb 19 16:52:35 2022 -0500
+
+    learnmore
+
+[33mcommit 6922f208213fa35afe82785c8179bdbbe3380c6b[m
+Author: Islam <54121657+izy1984@users.noreply.github.com>
+Date:   Sat Feb 19 11:01:13 2022 -0500
+
+    Update note_freq.py
+
+[33mcommit 8519c8a5815f099f6d17f0743b9d1ead1eda4462[m
+Author: Islam <54121657+izy1984@users.noreply.github.com>
+Date:   Sat Feb 19 09:48:13 2022 -0500
+
+    Update note_freq.py
+
+[33mcommit b067a90891e732d1bac2e8fecb026c90100add5c[m
+Author: KHOA NGUYEN <khoa.nguyen21@myhunter.cuny.edu>
+Date:   Sat Feb 19 03:17:24 2022 -0500
+
+    guitarlady-frontend
+
+[33mcommit 9513e7fb83b82ec20febf527710e4b7631fbbfc9[m
+Author: KHOA NGUYEN <khoa.nguyen21@myhunter.cuny.edu>
+Date:   Sat Feb 19 00:04:37 2022 -0500
+
+    frontend main page stuff
+
+[33mcommit 21e5389b08d7cc20a866039625cbe10bbd2c0215[m
+Author: Islam <54121657+izy1984@users.noreply.github.com>
+Date:   Fri Feb 18 22:22:25 2022 -0500
+
+    Update note_freq.py
+
+[33mcommit cd0b805b1149054214ce097058edbedf32f6a8b6[m
+Author: Chris Panican <chrispanican@gmail.com>
+Date:   Fri Feb 18 21:52:15 2022 -0500
+
+    adding bootstrap
+
+[33mcommit 335257246dc935fab8596650f0650cccf15dddfe[m
+Author: Chris Panican <chrispanican@gmail.com>
+Date:   Fri Feb 18 20:17:21 2022 -0500
+
+    skeleton pages frontend
+
+[33mcommit 7569e2b0aa7a0a9dd5b8e4e8805c6a4f7f92bcc3[m
+Author: Chris Panican <chrispanican@gmail.com>
+Date:   Fri Feb 18 19:54:54 2022 -0500
+
+    update stuff
+
+[33mcommit 77ae2af5e9d4d33bdaa3bd373d746cdbd1b9d52c[m
+Author: Chris Panican <chrispanican@gmail.com>
+Date:   Fri Feb 18 19:41:11 2022 -0500
+
+    Reorganize
+
+[33mcommit 06205a2a0c11d8dd4863bcbad266161eba11498c[m
+Author: khoa21 <khoa.nguyen21@myhunter.cuny.edu>
+Date:   Fri Feb 18 19:23:12 2022 -0500
+
+    nextjs files
+
+[33mcommit 037809998a9b2d59a19f723a42524d206d61dad5[m
+Author: Islam <54121657+izy1984@users.noreply.github.com>
+Date:   Fri Feb 18 17:52:18 2022 -0500
+
+    Create tone.js
+
+[33mcommit edea315f94bb5ab66fc0da26dad9b883ea71f792[m
+Author: Islam <54121657+izy1984@users.noreply.github.com>
+Date:   Fri Feb 18 17:51:19 2022 -0500
+
+    Delete main_tone.js
+
+[33mcommit 3992f70406e97103ffb3833e394710fcbc56989b[m
+Merge: d844381 3d9a5a5
+Author: Chris Panican <chrispanican@gmail.com>
+Date:   Fri Feb 18 17:39:19 2022 -0500
+
+    Merge branch 'main' of https://github.com/cpanican/test_repo
+
+[33mcommit d84438181875cc7e3c32c0bdfa8465196ae21304[m
+Author: Chris Panican <chrispanican@gmail.com>
+Date:   Fri Feb 18 17:39:07 2022 -0500
+
+    setup flask
+
+[33mcommit 3d9a5a5e8aea3b45ac48e49f9963ed129220421a[m
+Author: izy1984 <islamelkattawy@gmail.com>
+Date:   Fri Feb 18 17:37:14 2022 -0500
+
+    main.py into flask api
+
+[33mcommit 7e37e178d24900834c80818a1d488ad2ba5dff79[m
+Author: izy1984 <islamelkattawy@gmail.com>
+Date:   Fri Feb 18 17:20:47 2022 -0500
+
+    add python code
+
+[33mcommit d3e9b3d17b8b26420af97ad5474b5cdafcbcbd02[m
+Author: Chris Panican <chrispanican@gmail.com>
+Date:   Fri Feb 18 17:06:18 2022 -0500
+
+    first commit
+
+[33mcommit 9e4165cf065e1508a64dde04517a6152c40b7c52[m
+Author: Chris Panican <chrispanican@gmail.com>
+Date:   Fri Feb 18 16:46:13 2022 -0500
+
+    Initial commit
