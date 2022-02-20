@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import '../styles/GetStarted.css';
+import { Link } from "react-router-dom";
 // Import Audio Recorder
 import AudioReactRecorder, { RecordState } from 'audio-react-recorder'
 import 'audio-react-recorder/dist/index.css'
+// passing of state using context
+import { MyContext } from '../MyProvider';
 
 class GetStarted extends Component {
   constructor(props) {
@@ -60,12 +63,21 @@ class GetStarted extends Component {
             controls
             src={this.state.audioData ? this.state.audioData.url : null}
           ></audio>
-          <button
-            className='btn btn-primary btn-lg tuudle-purple-btn continue-btn'
-            disabled={this.state.continueState}
-          >
-            Continue
-          </button>
+          
+          <MyContext.Consumer>
+            {({audioFile, setAudioFile}) => (
+              <Link to="/pick-instrument">
+                <button
+                className='btn btn-primary btn-lg tuudle-purple-btn continue-btn'
+                disabled={this.state.continueState}
+                onClick={() => setAudioFile(this.state.audioData)}
+                >
+                  Continue
+                </button>
+              </Link>
+              
+            )}
+          </MyContext.Consumer>
         </main>
       </div>
     );

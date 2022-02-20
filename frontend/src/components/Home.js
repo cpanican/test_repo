@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from "react-router-dom";
 import '../styles/Home.css';
 
 class Home extends Component {
@@ -17,15 +18,15 @@ class Home extends Component {
 
         <div className="buttonGrid">
           <div>
-            <a href="/get-started">
+            <Link to="/get-started">
               <button class="btn btn-outline-secondary btn-lg tuudle-learn-btn"><i class="bi bi-mic"></i> Learn More</button>
-            </a>
+            </Link>
           </div>
           <div></div>
           <div>
-            <a href="/get-started">
+            <Link to="/get-started">
               <button class="btn btn-primary btn-lg tuudle-purple-btn">Get Started <i class="bi bi-arrow-right-short"></i></button>
-            </a>
+            </Link>
           </div>
         </div>
 
