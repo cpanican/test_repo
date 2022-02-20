@@ -8,7 +8,7 @@ from midi2audio import FluidSynth
 import subprocess
 import mido
 
-file = r"C:/Users/Islam/Desktop/demos/Ode to Joy.wav"
+file = r"C:/Users/Islam/Desktop/demos/test.wav"
 interval = 30
 
 def freq(file):
@@ -67,6 +67,7 @@ def freq(file):
     return notes
 
 # Find note based on frequency
+list_of_freqs = []
 def note(freq):
     A4 = 440
     C0 = A4*pow(2, -4.75)
@@ -82,8 +83,13 @@ note_list = []
 for i in freq(file):
     note_list.append((note(mean([item[0] for item in i])), i[0][1]))
 
+
 print(f'len(note_list): {len(note_list)}')
-print(note_list)
+
+def MIDI_freq_formula(MIDI_num):
+    return 440 * 2 ** ((MIDI_num - 69)/12)
+
+# print(note_list)
 
 MIDI_note_dict = {
     'C-1': 0, 'C#-1': 1, 'D-1': 2, 'D#-1': 3, 'E-1': 4, 
@@ -127,6 +133,29 @@ mf.addTempo(track, time, 1200)
 channel = 0
 volume = 100
 
+r_dict = {
+    'piano': 0,
+    'guitar': 1,
+    'flute': 2,
+    'violin': 3
+}
+
+insts = [(21, 108), (38, 97), (0, 72),'violin']
+
+inst = 'piano'
+
+for j in range(len(note_list)):
+    while MIDI_note_dict[note_list[j][0]] > insts[r_dict[inst]][1] or MIDI_note_dict[note_list[j][0]] < insts[r_dict[inst]][0]:
+        if MIDI_note_dict[note_list[j][0]] > insts[r_dict[inst]][1]:
+            for i in range(len(note_list)):
+                note_list[i] = (note_list[i][0][:-1] + str(int(note_list[i][0][-1])- 1), note_list[i][1])
+        else:
+            for i in range(len(note_list)):
+                note_list[i] = (note_list[i][0][:-1] + str(int(note_list[i][0][-1])+ 1), note_list[i][1])
+
+
+print(note_list)
+
 f_input = 'output.mid'
 x = 0
 for note in note_list:
@@ -144,8 +173,5 @@ with open(f_input, 'wb') as outf:
 
 # Convert bpm to ms
 # print(mido.bpm2tempo(1200)/1000)
-
-instruments = ['piano', 'guitar', 'violen', 'bass?', 'sax']
-inst = 'piano'
 
 subprocess.call(f'powershell.exe fluidsynth -F {f_input[:-4]}{inst}.wav {inst}.sf2 {f_input}', shell=True)
