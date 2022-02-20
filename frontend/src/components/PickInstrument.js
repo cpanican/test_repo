@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../styles/PickInstrument.css';
+import { MyContext } from '../MyProvider';
 
 class PickInstrument extends Component {
   render() {
@@ -19,7 +20,18 @@ class PickInstrument extends Component {
             <a href="/get-started">
               <button class="btn btn-primary btn-lg tuudle-purple-btn">Convert</button>
             </a>
+            
           </div>
+          <MyContext.Consumer>
+            {({audioFile, setAudioFile, audioFileTester}) => (
+              <button
+              className='btn btn-primary btn-lg tuudle-purple-btn continue-btn'
+              onClick={audioFileTester}
+              >
+                test
+              </button>
+            )}
+          </MyContext.Consumer>
         </div>
       </main>
     );

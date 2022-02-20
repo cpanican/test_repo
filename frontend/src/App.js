@@ -7,6 +7,7 @@ import Success from './components/Success';
 import PickInstrument from './components/PickInstrument';
 import Footer from './components/Footer';
 import './App.css';
+import MyProvider from './MyProvider';
 
 function App() {
   return (
@@ -15,9 +16,9 @@ function App() {
         <Router>
           <Routes>
             <Route exact path="/" element={<Home/>} />
-            <Route exact path="/get-started" element={<GetStarted/>} />
+            <Route exact path="/get-started" element={<MyProvider><GetStarted/></MyProvider>} />
+            <Route exact path="/pick-instrument" element={<MyProvider><PickInstrument/></MyProvider>} />
             <Route exact path="/success" element={<Success/>} />
-            <Route exact path="/pick-instrument" element={<PickInstrument/>} />
           </Routes>
         </Router>
       <Footer />
