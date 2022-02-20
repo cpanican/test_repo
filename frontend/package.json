@@ -1,8 +1,8 @@
 {
-  "name": "Tuudle",
+  "name": "tuudle",
   "version": "0.1.0",
   "private": false,
-  "homepage": "http://cpanican.github.io/tuudle",
+  "homepage": "https://cpanican.github.io/tuudle",
   "dependencies": {
     "@emotion/react": "^11.8.1",
     "@emotion/styled": "^11.8.1",
