@@ -12,9 +12,13 @@ export default function GetStarted() {
         </p>
 
         <div className={styles.grid}>
-          <a href="/success">
-            <button class="btn btn-outline-secondary"><i class="bi bi-mic"></i>Record</button>
-          </a>
+
+                <button className={styles.RecordingBtn} class="btn btn-outline-secondary btn-lg">
+
+                    <p className={styles.recordFont}> Record </p>
+                    <i class="bi bi-mic"></i>
+                </button>
+
         </div>
 
 
