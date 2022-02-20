@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css'
 import '../styles/Success.css';
 
 class Success extends Component {
@@ -15,26 +16,39 @@ class Success extends Component {
         </p>
 
 
-       <div>
 
+        <div className ="box">
+
+        <div>
         <button>
-        <img source="pianoframe" src="/images/redpiano.jpg" width ="200" height = "200" ></img>
-        </button>
-
-
-
-        <button>
-        <img source="pianoframe" src="/images/guitar.jpg" width ="200" height = "200"></img>
-        </button>
-
-
-
-        <button>
-        <img source="pianoframe" src="/images/electric-guitar.jpg" width ="200" height = "200"></img>
+        <img source="pianoframe" src="/images/redpiano.jpg"
+        width ="200"
+        height = "200" >
+         </img>
         </button>
         </div>
 
+        <div>
+        <button>
+        <img  source="pianoframe"
+        src="/images/guitar.jpg"
+        width ="200"
+         height ="200">
+         </img>
+        </button>
+        </div>
 
+        <div>
+        <button>
+        <img source="pianoframe"
+         src="/images/electric-guitar.jpg"
+          width ="200"
+          height = "200">
+          </img>
+        </button>
+        </div>
+
+        </div>
       </main>
     );
   }
