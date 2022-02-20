@@ -15,6 +15,7 @@
   font-weight: 600;
   font-size: 60px;
   line-height: 72px;
+  color: #101828;
   padding: 96px 128px 24px 128px;
 }
 
@@ -24,16 +25,27 @@
   font-size: 20px;
   line-height: 30px;
   color: #667085;
-  padding: 0px 18vw 48px 18vw;
+  padding-bottom: 48px;
+  margin: 0px 208px;
 }
 
-.buttonContainer {
-  padding-bottom: 3000px;
+.mainImage {
+  margin-top: 64px;
+  box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05), 0px 0px 0px 4px #F4EBFF;
+  border-radius: 16px;
 }
 
-@media (max-width: 600px) {
-  .grid {
-    width: 100%;
-    flex-direction: column;
+.buttonGrid {
+  display: grid;
+  grid-template-columns: 1fr .075fr 1fr;
+}
+
+.btn-lg, .btn-group-lg {
+  font-size: 1rem;
+}
+
+@media (max-width: 767px) {
+  .description {
+    margin: 0px 103px;
   }
 }
