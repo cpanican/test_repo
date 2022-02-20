@@ -7,12 +7,10 @@ class Success extends Component {
   render() {
     return (
       <main className="main">
-        <h1>Success! </h1>
-        <h1>Your music notes are here!</h1>
+        <h1 className="title">Success!<br></br>Your music notes are here!</h1>
+        <h1></h1>
         <p className="description">
-         <p> Tuudle completed the instrumental conversion. </p>
-         <p> Download your tunes below. </p>
-         <p> Keep rockin'! </p>
+         <p>Tuudle completed the instrumental conversion.<br></br>Download your tunes below.<br></br>Keep rockin'!</p>
         </p>
 
 
@@ -25,7 +23,6 @@ class Success extends Component {
             <div><button type="button" class="btn btn-secondary">G</button></div>
             <div><button type="button" class="btn btn-secondary">A</button></div>
             <div><button type="button" class="btn btn-secondary">C</button></div>
-
         </div>
 
         <div className ="box">
