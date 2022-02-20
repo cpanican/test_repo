@@ -7,9 +7,10 @@ from midiutil.MidiFile import MIDIFile
 from midi2audio import FluidSynth
 import subprocess
 import mido
+import time
 
 file = r"C:/Users/Islam/Desktop/test.wav"
-interval = 40
+interval = 35
 
 def freq(file):
     # Converts file to mono
@@ -126,10 +127,11 @@ r_dict = {
     'guitar': 1,
     'flute': 2,
     'bass': 3,
-    'trumpet': 4
+    'trumpet': 4,
+    'organ': 5
 }
 
-insts = [(21, 108), (38, 97), (0, 72), (24, 60), (52, 83)]
+insts = [(21, 108), (38, 97), (0, 72), (24, 60), (52, 83), (12, 117)]
 
 for inst in r_dict:
     # create your MIDI object
@@ -172,6 +174,7 @@ for inst in r_dict:
         mf.addNote(track, channel, pitch, time, duration, volume)
 
     mf.addProgramChange(track, channel, 0, 73)
+
 
     with open(f_input, 'wb') as outf:
         mf.writeFile(outf)
