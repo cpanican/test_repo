@@ -8,8 +8,8 @@ from midi2audio import FluidSynth
 import subprocess
 import mido
 
-file = r"C:/Users/Islam/Desktop/demos/test.wav"
-interval = 30
+file = r"C:/Users/Islam/Desktop/test.wav"
+interval = 40
 
 def freq(file):
     # Converts file to mono
@@ -89,7 +89,6 @@ print(f'len(note_list): {len(note_list)}')
 def MIDI_freq_formula(MIDI_num):
     return 440 * 2 ** ((MIDI_num - 69)/12)
 
-# print(note_list)
 
 MIDI_note_dict = {
     'C-1': 0, 'C#-1': 1, 'D-1': 2, 'D#-1': 3, 'E-1': 4, 
@@ -120,58 +119,57 @@ MIDI_note_dict = {
     'F9': 125, 'F#9': 126, 'G9': 127, 'G#9': 128
     }
 
-# create your MIDI object
-mf = MIDIFile(1)     # only 1 track
-track = 0   # the only track
-
-time = 0    # start at the beginning
-tempo = 60000/interval
-mf.addTrackName(track, time, "Sample Track")
-mf.addTempo(track, time, 1200)
-
-# add some notes
-channel = 0
-volume = 100
 
 r_dict = {
     'piano': 0,
     'guitar': 1,
     'flute': 2,
-    'violin': 3
+    'bass': 3
 }
 
-insts = [(21, 108), (38, 97), (0, 72),'violin']
+insts = [(21, 108), (38, 97), (0, 72), (24, 60)]
 
-inst = 'piano'
+for inst in r_dict:
+    # create your MIDI object
+    mf = MIDIFile(1)     # only 1 track
+    track = 0   # the only track
 
-for j in range(len(note_list)):
-    while MIDI_note_dict[note_list[j][0]] > insts[r_dict[inst]][1] or MIDI_note_dict[note_list[j][0]] < insts[r_dict[inst]][0]:
-        if MIDI_note_dict[note_list[j][0]] > insts[r_dict[inst]][1]:
-            for i in range(len(note_list)):
-                note_list[i] = (note_list[i][0][:-1] + str(int(note_list[i][0][-1])- 1), note_list[i][1])
-        else:
-            for i in range(len(note_list)):
-                note_list[i] = (note_list[i][0][:-1] + str(int(note_list[i][0][-1])+ 1), note_list[i][1])
+    time = 0    # start at the beginning
+    tempo = 60000/interval
+    mf.addTrackName(track, time, "Sample Track")
+    mf.addTempo(track, time, 1200)
+
+    # add some notes
+    channel = 0
+    volume = 100
+
+    for j in range(len(note_list)):
+        while MIDI_note_dict[note_list[j][0]] > insts[r_dict[inst]][1] or MIDI_note_dict[note_list[j][0]] < insts[r_dict[inst]][0]:
+            if MIDI_note_dict[note_list[j][0]] > insts[r_dict[inst]][1]:
+                for i in range(len(note_list)):
+                    note_list[i] = (note_list[i][0][:-1] + str(int(note_list[i][0][-1])- 1), note_list[i][1])
+            else:
+                for i in range(len(note_list)):
+                    note_list[i] = (note_list[i][0][:-1] + str(int(note_list[i][0][-1])+ 1), note_list[i][1])
 
 
-print(note_list)
+    print(inst, note_list)
 
-f_input = 'output.mid'
-x = 0
-for note in note_list:
-    x += 20
-    pitch = MIDI_note_dict[note[0]]
-    print(pitch)
-    time = (note[1]/120)*2.4
-    duration = (500/120)*2.4
-    mf.addNote(track, channel, pitch, time, duration, volume)
+    f_input = 'output.mid'
 
-mf.addProgramChange(track, channel, 0, 73)
-# write it to disk
-with open(f_input, 'wb') as outf:
-    mf.writeFile(outf)
+    for note in note_list:
+        pitch = MIDI_note_dict[note[0]]
+        time = (note[1]/120)*2.4
+        duration = (500/120)*2.4
+        mf.addNote(track, channel, pitch, time, duration, volume)
 
-# Convert bpm to ms
-# print(mido.bpm2tempo(1200)/1000)
+    mf.addProgramChange(track, channel, 0, 73)
 
-subprocess.call(f'powershell.exe fluidsynth -F {f_input[:-4]}{inst}.wav {inst}.sf2 {f_input}', shell=True)
+    with open(f_input, 'wb') as outf:
+        mf.writeFile(outf)
+
+
+    # Convert bpm to ms
+    # print(mido.bpm2tempo(1200)/1000)
+
+    subprocess.call(f'powershell.exe fluidsynth -F {f_input[:-4]}{inst}.wav {inst}.sf2 {f_input}', stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
