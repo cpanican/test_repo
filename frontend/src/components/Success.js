@@ -65,6 +65,23 @@ class Success extends Component {
         </div>
         </button>
        </div>
+
+       <div className="buttonGrid">
+          <div>
+            <Link to="Home.js">
+              <button class="btn btn-outline-secondary btn-lg tuudle-learn-btn"><i class="bi bi-arrow-left"></i> Home</button>
+            </Link>
+          </div>
+          <div></div>
+          <div>
+            <Link to="/get-started">
+              <button class="btn btn-primary btn-lg tuudle-purple-btn">Record Again <i class="bi bi-mic"></i></button>
+            </Link>
+          </div>
+        </div>
+
+
+
       </main>
     );
   }

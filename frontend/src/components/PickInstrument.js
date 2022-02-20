@@ -65,7 +65,7 @@ class PickInstrument extends Component {
               </div>
               <div></div>
               <div>
-                
+
                 <button class="btn btn-primary btn-lg tuudle-purple-btn" onClick={() => {
                   this.uploadFile(this.state.audioData.blob, this.state.pickedInstrument);
                 }}>Convert</button>
