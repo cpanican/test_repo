@@ -10,26 +10,22 @@ class GetStarted extends Component {
 
     this.state = {
       recordState: null,
-      audioData: null
+      audioData: null,
+      continueState: true,
     }
   }
 
-  start = () => {
-    this.setState({
-      recordState: RecordState.START
-    })
-  }
-
-  pause = () => {
-    this.setState({
-      recordState: RecordState.PAUSE
-    })
-  }
-
-  stop = () => {
-    this.setState({
-      recordState: RecordState.STOP
-    })
+  recordHandler = () => {
+    if (this.state.recordState === null || this.state.recordState === RecordState.STOP) {
+      this.setState({
+        recordState: RecordState.START
+      })
+    } else if (this.state.recordState === RecordState.START) {
+      this.setState({
+        recordState: RecordState.STOP,
+        continueState: false
+      })
+    }
   }
 
   onStop = (data) => {
@@ -51,26 +47,24 @@ class GetStarted extends Component {
           <p className="description">
             Click on the record button and start whistling a tune. Once you're done, click finish recording and let Tuudle do its magic!
           </p>
-          <div className="grid">
-            <button className="RecordingBtn" class="btn btn-outline-secondary btn-lg">
-              <p className="recordFont"> Record </p>
-              <i class="bi bi-mic"></i>
-            </button>
-          </div>
-          <AudioReactRecorder state={recordState} onStop={this.onStop} />
+          <button className="RecordingBtn" onClick={this.recordHandler}>
+            <i className="bi bi-mic mic-icon-size"></i>
+            <p className="recordFont">{this.state.recordState === RecordState.START ? "Recording" : "Record"}</p>
+          </button>
+          <AudioReactRecorder
+            backgroundColor="rgb(255,255,255)"
+            state={recordState}
+            onStop={this.onStop} />
           <audio
             id='audio'
             controls
             src={this.state.audioData ? this.state.audioData.url : null}
           ></audio>
-          <button id='record' onClick={this.start}>
-            Start
-          </button>
-          <button id='pause' onClick={this.pause}>
-            Pause
-          </button>
-          <button id='stop' onClick={this.stop}>
-            Stop
+          <button
+            className='btn btn-primary btn-lg tuudle-purple-btn continue-btn'
+            disabled={this.state.continueState}
+          >
+            Continue
           </button>
         </main>
       </div>
