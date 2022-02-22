@@ -34,7 +34,7 @@ class Success extends Component {
         width ="100"
         height = "100" >
         </img>
-        <p className ="purplefont">MonoSynth</p><i class="bi bi-download"></i>
+        <p className ="purplefont">Piano</p><i class="bi bi-download"></i>
         </div>
         </button>
 
@@ -53,32 +53,30 @@ class Success extends Component {
         <div className = "card">
 
         <img className="card-img-top"
-        src="/images/electric-guitar.jpg"
+        src="/images/trumpet.jpg"
           width ="100"
           height = "100">
           </img>
 
-        <p className = "purplefont">Electric Guitar</p><i class="bi bi-download"></i>
+        <p className = "purplefont">Trumpet</p><i class="bi bi-download"></i>
         </div>
         </button>
-       </div>
-
-       <div className="buttonGrid">
-          <div>
-            <Link to="Home.js">
-              <button class="btn btn-outline-secondary btn-lg tuudle-learn-btn"><i class="bi bi-arrow-left"></i> Home</button>
-            </Link>
-          </div>
-          <div></div>
-          <div>
-            <Link to="/get-started">
-              <button class="btn btn-primary btn-lg tuudle-purple-btn">Record Again <i class="bi bi-mic"></i></button>
-            </Link>
+        </div>
+        <div className='button-success-padding'>
+          <div className="buttonGrid">
+            <div>
+              <Link to="/">
+                <button class="btn btn-outline-secondary btn-lg tuudle-learn-btn"><i class="bi bi-arrow-left"></i> Home</button>
+              </Link>
+            </div>
+            <div></div>
+            <div>
+              <Link to="/get-started">
+                <button class="btn btn-primary btn-lg tuudle-purple-btn">Record Again <i class="bi bi-mic"></i></button>
+              </Link>
+            </div>
           </div>
         </div>
-
-
-
       </main>
     );
   }

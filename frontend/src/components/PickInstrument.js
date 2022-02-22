@@ -47,6 +47,27 @@ class PickInstrument extends Component {
           <p className="description">To convert the music notes, select the instrument(s) below.</p>
         </div>
 
+        <div className="instrumentGrid">
+          <div>
+            <input type="checkbox" className="btn-check" id="btn-check-1-outlined" checked autocomplete="off"></input>
+            <label class="btn btn-outline-secondary btn-selectors" for="btn-check-1-outlined">🎹 Piano</label><br></br>
+          </div>
+          <div></div>
+          <div>
+            <input type="checkbox" className="btn-check" id="btn-check-2-outlined" checked autocomplete="off"></input>
+            <label class="btn btn-outline-secondary btn-selectors" for="btn-check-2-outlined">🎸 Guitar</label><br></br>
+          </div>
+          <div></div>
+          <div>
+            <input type="checkbox" className="btn-check" id="btn-check-3-outlined" checked autocomplete="off"></input>
+            <label class="btn btn-outline-secondary btn-selectors" for="btn-check-3-outlined">🎺 Trumpet</label><br></br>
+          </div>
+          <div></div>
+        
+        </div>
+
+        
+
         <div className="buttonGrid">
           <div>
             <Link to="/get-started">
